@@ -17,6 +17,8 @@ public class PostMethodQuiz09 extends HttpServlet {
 		
 		response.setContentType("text/html");
 		
+		// stash 용 주석 추가
+		
 		PrintWriter out = response.getWriter();
 		
 		String name = request.getParameter("name");
