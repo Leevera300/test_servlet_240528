@@ -39,8 +39,14 @@ public class GetMethodQuiz08 extends HttpServlet {
 		while (iter.hasNext()) {
 			String line = iter.next();
 			if (line.contains(search)) {
-				String newLine = line.replace(search, "<b>" + search + "</b>");
-				out.println(newLine + "<br>");
+				//1
+//				line = line.replace(search, "<b>" + search + "</b>");
+//				out.println(line + "<br>");
+				
+				//2
+				String[] words = line.split(search);
+				out.print(words[0] + "<b>" + search + "</b>" + words[1] + "<br>");
+				
 			}
 		}
 		out.print("</body></html>");
