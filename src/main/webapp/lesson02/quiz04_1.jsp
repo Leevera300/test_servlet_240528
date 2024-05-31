@@ -9,8 +9,8 @@
 <body>
 	<%
 	int cm = Integer.valueOf(request.getParameter("length"));
-	double in = cm / 2.54;
-	double yard = cm / 91.44;
+	double in = 0;
+	double yard = 0;	
 	double feet = cm / 30.48;
 	double meter = cm / 100.0;
 	String[] conversionArr = request.getParameterValues("conversion");
@@ -22,16 +22,23 @@
 	<%
 		if (conversionArr != null) {
 			for(String conversion : conversionArr) {
-				if (conversion == "in") {
-					out.print(in + "in");
-				} else if(conversion == "yard") {
-					out.print(yard + "yard");
+				if (conversion.equals("in")) {
+					in = cm / 2.54;
+				} else if(conversion.equals("yard")) {
+					yard = cm / 91.44;
+				} else if(conversion.equals("feet")) {
+					feet = cm / 30.48;
+				} else if(conversion.equals("meter")) {
+					meter = cm / 100.0;
 				}
 				
 			}
 		}
 	%>
-	
+	<h3><%=in %> in</h3>
+	<h3><%=yard %> yd</h3>
+	<h3><%=feet %> ft</h3>
+	<h3><%=meter %> m</h3>
 	
 </body>
 </html>
