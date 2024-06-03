@@ -46,7 +46,13 @@
 				for (Map<String, Object> item : list) {
 					
 					if (item.get("menu").equals(menuSearch)) {
-						if (point != null && (double)item.get("point") >= 4.0) {
+						// 4 점 이하 제외 체크됨: "true" 체크안됨:null
+						boolean exclude = point != null;  // 체크됨 => 4 점이하 제외
+						// if (point != null && (double)item.get("point") >= 4.0) {
+						// skip 조건이 체크되어 있고 시킵 되어야 할 때 skip(continue)
+						if (exclude && (double)item.get("point") <= 4.0) {
+							continue; // 안뿌리고 skip
+						}
 			%>
 			<%
 						
@@ -56,16 +62,18 @@
 					<td><%= item.get("name") %></td>
 					<td><%= item.get("point") %></td>		
 				</tr>
-			<%			}
-						if (point == null) {
+			<%			
+			// } else if (point == null) {
 			%>
+			<!--  
 				<tr>
 					<td><%= item.get("menu") %></td>
 					<td><%= item.get("name") %></td>
 					<td><%= item.get("point") %></td>		
 				</tr>
+				-->
 			<%
-						}
+						// }
 					}
 				}
 			%>
