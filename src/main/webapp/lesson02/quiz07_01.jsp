@@ -44,19 +44,20 @@
 			<tbody>
 			<% 
 				for (Map<String, Object> item : list) {
-					double points = (int)item.get("point");
+					
 					if (item.get("menu").equals(menuSearch)) {
+						if (point != null && (double)item.get("point") >= 4.0) {
 			%>
 			<%
-						if (point != null && points >= 4.0) {
+						
 			%>		
 				<tr>
 					<td><%= item.get("menu") %></td>
 					<td><%= item.get("name") %></td>
 					<td><%= item.get("point") %></td>		
 				</tr>
-			<%		
-						} else {
+			<%			}
+						if (point == null) {
 			%>
 				<tr>
 					<td><%= item.get("menu") %></td>
