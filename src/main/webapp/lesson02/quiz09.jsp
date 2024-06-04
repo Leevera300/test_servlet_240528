@@ -61,7 +61,7 @@
     map = new HashMap<String, String>() {{ put("ch", "121"); put("name", "KBSN 스포츠"); put("category", "스포츠"); } };
     list.add(map);
     
-    String category = request.getParameter("category");
+
 %>
 	<div id="wrap" class="container">
 		<header class="d-flex justify-content-center align-items-center">
@@ -69,7 +69,7 @@
 		</header>
 		<nav class="bg-danger d-flex align-items-center">
 			<ul class="nav nav-fill w-100">
-                        <li class="nav-item"><a class="nav-link" href="/lesson02/quiz09.jsp?category=전체">전체</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/lesson02/quiz09.jsp">전체</a></li>
                         <li class="nav-item"><a class="nav-link" href="/lesson02/quiz09.jsp?category=지상파">지상파</a></li>
                         <li class="nav-item"><a class="nav-link" href="/lesson02/quiz09.jsp?category=영화">영화</a></li>
                         <li class="nav-item"><a class="nav-link" href="/lesson02/quiz09.jsp?category=드라마">드라마</a></li>
@@ -88,23 +88,18 @@
 				</thead>
 				<tbody>
 					<% 
+				    String category = request.getParameter("category");
+					
 					for (Map<String, String> channel : list) {
-						if (channel.get("category").equals(category)) {
+						if (category == null || channel.get("category").equals(category)) {
+							// 카테고리 null(전체) 또는 카테고리 일치
 					%>
 					<tr>
 						<td><%=channel.get("ch")  %></td>
 						<td><%=channel.get("name") %></td>
 						<td><%=channel.get("category") %></td>
 					</tr>
-					<%
-						} else if(category == null || category.equals("전체")) {
-					%>
-						<tr>
-						<td><%=channel.get("ch")  %></td>
-						<td><%=channel.get("name") %></td>
-						<td><%=channel.get("category") %></td>
-					</tr>
-					<%		
+					<% 
 						}
 					}
 					%>
