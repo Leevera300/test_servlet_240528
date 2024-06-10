@@ -13,6 +13,7 @@ import com.test.common.MysqlService;
 @WebServlet("/lesson03/quiz02_insert")
 public class InsertQuiz02 extends HttpServlet {
 
+	@Override
 	public void doPost (HttpServletRequest request, HttpServletResponse response) throws IOException {
 			// response header 생략
 		

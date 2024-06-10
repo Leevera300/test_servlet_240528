@@ -13,6 +13,7 @@ import com.test.common.MysqlService;
 @WebServlet("/lesson03/quiz02_delete")
 public class DeleteQuiz02 extends HttpServlet {
 
+	@Override
 	public void doGet (HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 			// reqeust params
